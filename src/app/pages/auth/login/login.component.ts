@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { Router } from '@angular/router';
+import { UserService } from '../../../user.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent {
   password = '';
   router = inject(Router);
 
-  constructor(private http: HttpClient) { } // Inject HttpClient
+  constructor(private http: HttpClient, private userService: UserService) { } // Inject HttpClient
 
   onSubmit() {
     const userData = {
@@ -33,10 +34,12 @@ export class LoginComponent {
       password: this.password
     };
 
-    this.http.post('https://nest.monirsaikat.xyz/auth/login', userData).subscribe({
+    this.http.post('http://localhost:3000/auth/login', userData).subscribe({
       next: (response: any) => {
         console.log('User logged in successfully:', response);
         localStorage.setItem('accessToken', response?.accessToken);
+        console.log('User logged in successfully:', response);
+        this.userService.setUser(response);
         this.router.navigate(['user/dashboard']);
       },
       error: (error) => {

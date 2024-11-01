@@ -3,13 +3,19 @@
   <a routerLink="/about">
     About
   </a>
-  <a routerLink="/auth/login">
-    Login
-  </a>
-  <a routerLink="/auth/register">
-    Register
-  </a>
-  <a routerLink="/user/dashboard">
-    Dashboard
-  </a>
+  @if(!user) {
+    <a routerLink="/auth/login">
+      Login
+    </a>
+    <a routerLink="/auth/register">
+      Register
+    </a>
+  } @else {
+    <a routerLink="/user/dashboard">
+      Dashboard
+    </a>
+    <a href="#" (click)="logoutUser($event)">
+      Logout
+    </a> 
+  }
 </nav>
