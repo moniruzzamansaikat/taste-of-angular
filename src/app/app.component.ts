@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, ButtonModule],
+  imports: [
+    RouterOutlet, ButtonModule, NavbarComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
