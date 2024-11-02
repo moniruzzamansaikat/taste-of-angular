@@ -21,6 +21,7 @@ import { UserService } from '../../../user.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  title = "Login";
   email = '';
   username = '';
   password = '';
