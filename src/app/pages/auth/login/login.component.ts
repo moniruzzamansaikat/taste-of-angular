@@ -35,7 +35,7 @@ export class LoginComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:3000/auth/login', userData).subscribe({
+    this.http.post('https://nest.monirsaikat.xyz/auth/login', userData).subscribe({
       next: (response: any) => {
         console.log('User logged in successfully:', response);
         localStorage.setItem('accessToken', response?.accessToken);
